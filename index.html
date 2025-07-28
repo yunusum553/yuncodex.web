@@ -18,7 +18,6 @@
       color: #00ff00;
     }
     /* Matrix arka plan canvas */
-    /* Matrix arka plan canvas - EN ÖNDE */
     #matrix-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -26,9 +25,6 @@
       height: 100vh;
       z-index: -1;
       background-color: black;
-      z-index: 9999; /* En önde */
-      pointer-events: none; /* Üstünden tıklanabilirlik geçsin */
-      background-color: transparent; /* Saydam arka plan */
       display: block;
     }
 
@@ -71,7 +67,6 @@
     }
     #header-01 {
       display: none; /* 01 yazısı kaldırıldı */
-      display: none;
     }
     @keyframes blink {
       0%, 100% { opacity: 1; }
@@ -241,38 +236,9 @@
       background-color: #00cc00;
       box-shadow: 0 0 20px #00ff00;
     }
-
-    /* Instagram profil yuvarlak butonlar */
-    .profile-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      border: 2px solid #00ff0044;
-      background: rgba(0,0,0,0.5);
-      box-shadow: 0 0 15px #00ff0044;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      overflow: hidden;
-    }
-    .profile-btn img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .profile-btn:hover {
-      background: rgba(0,255,0,0.3);
-      box-shadow: 0 0 30px #00ff00;
-      border-color: #00ff00;
-    }
   </style>
 </head>
 <body>
-  <!-- Matrix animasyon canvas - ÖNDE -->
   <canvas id="matrix-canvas"></canvas>
 
   <div class="header">
@@ -334,37 +300,8 @@
     <button id="logout-btn" style="margin-left: 10px; background:#ef4444;">Çıkış Yap</button>
   </div>
 
-  <!-- Instagram profiller -->
-  <div class="social-login" style="margin-top: 40px;">
-    <a href="https://www.instagram.com/kaandemiirtass/" target="_blank" aria-label="Instagram Profile 1" rel="noopener noreferrer" class="profile-btn">
-      <img src="https://static.ticimax.cloud/63567/uploads/urunresimleri/buyuk/kaan-imza-bench-v1-c16c3-.jpg" alt="Kaan" />
-    </a>
-    <a href="https://www.instagram.com/yunusemrr55l/" target="_blank" aria-label="Instagram Profile 2" rel="noopener noreferrer" class="profile-btn">
-      <img src="https://www.yaziliresimler.com/images/sekilli-YUNUS-ismi.png" />
-    </a>
-  </div>
-
-  <!-- YouTube Video -->
-  <div style="text-align:center; margin: 20px 0;">
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/VRjqeSzeYuk?autoplay=1&mute=1"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- Kayıtlı kullanıcıları görüntüleme linki -->
-  <a href="users.html" style="color:#00ff00; text-decoration:underline; display:block; text-align:center; margin-top:15px;">
-    Kayıtlı Kullanıcıları Görüntüle
-  </a>
-
   <script>
     // Matrix animasyonu tam ekran canvas
-    // Matrix animasyonu
     const canvas = document.getElementById('matrix-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -380,7 +317,6 @@
 
     const letters = ['0', '1'];
     const blockSize = 18; // Hücre boyutu
-    const blockSize = 18;
     let columns, rows;
     let drops = [];
 
@@ -397,7 +333,6 @@
     function draw() {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Önce temizle
 
       ctx.font = blockSize + 'px monospace';
       ctx.textAlign = 'center';
@@ -410,7 +345,6 @@
         let text = letters[Math.floor(Math.random() * letters.length)];
 
         // Küçük yarı saydam yeşil blok
-        // Yarı saydam yeşil blok
         ctx.fillStyle = 'rgba(0, 255, 0, 0.2)';
         ctx.fillRect(i * blockSize, drops[i] * blockSize, blockSize, blockSize);
 
@@ -426,8 +360,6 @@
     }
 
     setInterval(draw, 50);
-
-    // Geri kalan sayfa JS kodlarınız...
 
     // toggle password gözükür/gizlenir
     document.querySelectorAll('.toggle-password').forEach(toggle => {
@@ -560,6 +492,25 @@
 </body>
 </html>
 <div style="text-align:center; margin: 20px 0;">
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/VRjqeSzeYuk?autoplay=1&mute=1"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+<div class="social-login">
+  <a href="https://www.instagram.com/kaandemiirtass/" target="_blank" aria-label="Instagram Profile 1" rel="noopener noreferrer" class="profile-btn">
+    <img src="https://www.yaziliresimler.com/images/sekilli-KAAN-ismi.png" alt="Kaan" />
+  </a>
+  <a href="https://www.instagram.com/yunusemrr55l/" target="_blank" aria-label="Instagram Profile 2" rel="noopener noreferrer" class="profile-btn">
+    <img src="https://www.yaziliresimler.com/images/sekilli-YUNUS-ismi.png" />
+  </a>
+</div>
+
 <style>
   .social-login {
     display: flex;
@@ -594,4 +545,9 @@
     border-color: #00ff00;
   }
 </style>
+  <a href="users.html" 
+     style="color:#00ff00; text-decoration:underline; display:block; text-align:center; margin-top:15px;">
+    Kayıtlı Kullanıcıları Görüntüle
+  </a>
+
 </body>
