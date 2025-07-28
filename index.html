@@ -492,11 +492,85 @@
 </body>
 </html>
 <div style="text-align:center; margin: 20px 0;">
-  <iframe 
-    width="560" height="315" 
-    src="https://www.youtube.com/embed/VRjqeSzeYuk" 
-    title="YouTube video player" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/VRjqeSzeYuk?autoplay=1&mute=1"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen>
   </iframe>
 </div>
+<!-- Instagram Butonları -->
+<div class="social-login">
+  <a href="https://www.instagram.com/kaandemiirtass/" target="_blank" aria-label="Instagram Profile 1">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.instagram.com/kaandemiirtass/" target="_blank" aria-label="Instagram Profile 2">
+    <i class="fab fa-instagram"></i>
+  </a>
+</div>
+
+<style>
+  .social-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 25px;
+  }
+  .social-login a {
+    color: #00ff00cc;
+    font-size: 28px;
+    transition: color 0.3s ease;
+    user-select: none;
+    text-shadow: 0 0 5px #00ff00aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #00ff0044;
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px #00ff0044;
+    cursor: pointer;
+  }
+  .social-login a:hover {
+    color: #00ff00;
+    background: rgba(0,255,0,0.2);
+    box-shadow: 0 0 20px #00ff00;
+  }
+
+  /* Instagram Aç Butonu */
+  #open-instagram-btn {
+    display: block;
+    margin: 30px auto 0 auto;
+    padding: 12px 30px;
+    background-color: #00ff00;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ff00aa;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  #open-instagram-btn:hover {
+    background-color: #00cc00;
+    box-shadow: 0 0 20px #00ff00;
+  }
+</style>
+
+<!-- Instagram Aç Butonu -->
+<button id="open-instagram-btn">Instagram'ı Aç</button>
+
+<!-- FontAwesome İkonları için: -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<script>
+  document.getElementById('open-instagram-btn').addEventListener('click', () => {
+    window.open('https://www.instagram.com/kaandemiirtass/', '_blank');
+  });
+</script>
