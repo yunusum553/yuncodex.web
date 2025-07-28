@@ -17,14 +17,15 @@
       position: relative;
       color: #00ff00;
     }
-    /* Matrix arka plan canvas */
+    /* Matrix arka plan canvas - EN ÖNDE */
     #matrix-canvas {
       position: fixed;
       top: 0; left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: -1;
-      background-color: black;
+      z-index: 9999; /* En önde */
+      pointer-events: none; /* Üstünden tıklanabilirlik geçsin */
+      background-color: transparent; /* Saydam arka plan */
       display: block;
     }
 
@@ -49,7 +50,6 @@
       margin-right: auto;
       z-index: 1;
       position: relative;
-      /* Hafif arka plan için opak siyah */
       background-color: rgba(0,0,0,0.6);
       box-shadow: 0 0 10px #00ff00aa;
     }
@@ -66,7 +66,7 @@
       font-family: 'Courier New', Courier, monospace;
     }
     #header-01 {
-      display: none; /* 01 yazısı kaldırıldı */
+      display: none;
     }
     @keyframes blink {
       0%, 100% { opacity: 1; }
@@ -236,9 +236,38 @@
       background-color: #00cc00;
       box-shadow: 0 0 20px #00ff00;
     }
+
+    /* Instagram profil yuvarlak butonlar */
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 2px solid #00ff0044;
+      background: rgba(0,0,0,0.5);
+      box-shadow: 0 0 15px #00ff0044;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    .profile-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .profile-btn:hover {
+      background: rgba(0,255,0,0.3);
+      box-shadow: 0 0 30px #00ff00;
+      border-color: #00ff00;
+    }
   </style>
 </head>
 <body>
+  <!-- Matrix animasyon canvas - ÖNDE -->
   <canvas id="matrix-canvas"></canvas>
 
   <div class="header">
@@ -300,8 +329,36 @@
     <button id="logout-btn" style="margin-left: 10px; background:#ef4444;">Çıkış Yap</button>
   </div>
 
+  <!-- Instagram profiller -->
+  <div class="social-login" style="margin-top: 40px;">
+    <a href="https://www.instagram.com/kaandemiirtass/" target="_blank" aria-label="Instagram Profile 1" rel="noopener noreferrer" class="profile-btn">
+      <img src="https://static.ticimax.cloud/63567/uploads/urunresimleri/buyuk/kaan-imza-bench-v1-c16c3-.jpg" alt="Kaan" />
+    </a>
+    <a href="https://www.instagram.com/yunusemrr55l/" target="_blank" aria-label="Instagram Profile 2" rel="noopener noreferrer" class="profile-btn">
+      <img src="https://www.yaziliresimler.com/images/sekilli-YUNUS-ismi.png" />
+    </a>
+  </div>
+
+  <!-- YouTube Video -->
+  <div style="text-align:center; margin: 20px 0;">
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/VRjqeSzeYuk?autoplay=1&mute=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Kayıtlı kullanıcıları görüntüleme linki -->
+  <a href="users.html" style="color:#00ff00; text-decoration:underline; display:block; text-align:center; margin-top:15px;">
+    Kayıtlı Kullanıcıları Görüntüle
+  </a>
+
   <script>
-    // Matrix animasyonu tam ekran canvas
+    // Matrix animasyonu
     const canvas = document.getElementById('matrix-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -316,7 +373,7 @@
     });
 
     const letters = ['0', '1'];
-    const blockSize = 18; // Hücre boyutu
+    const blockSize = 18;
     let columns, rows;
     let drops = [];
 
@@ -331,8 +388,7 @@
     resetDrops();
 
     function draw() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Önce temizle
 
       ctx.font = blockSize + 'px monospace';
       ctx.textAlign = 'center';
@@ -344,7 +400,7 @@
 
         let text = letters[Math.floor(Math.random() * letters.length)];
 
-        // Küçük yarı saydam yeşil blok
+        // Yarı saydam yeşil blok
         ctx.fillStyle = 'rgba(0, 255, 0, 0.2)';
         ctx.fillRect(i * blockSize, drops[i] * blockSize, blockSize, blockSize);
 
@@ -360,6 +416,8 @@
     }
 
     setInterval(draw, 50);
+
+    // Geri kalan sayfa JS kodlarınız...
 
     // toggle password gözükür/gizlenir
     document.querySelectorAll('.toggle-password').forEach(toggle => {
@@ -388,166 +446,4 @@
 
     loginToggle.addEventListener('click', () => {
       loginToggle.classList.add('active');
-      loginToggle.setAttribute('aria-selected', 'true');
-      registerToggle.classList.remove('active');
-      registerToggle.setAttribute('aria-selected', 'false');
-      loginForm.classList.add('active');
-      loginForm.setAttribute('aria-hidden', 'false');
-      registerForm.classList.remove('active');
-      registerForm.setAttribute('aria-hidden', 'true');
-    });
-
-    registerToggle.addEventListener('click', () => {
-      registerToggle.classList.add('active');
-      registerToggle.setAttribute('aria-selected', 'true');
-      loginToggle.classList.remove('active');
-      loginToggle.setAttribute('aria-selected', 'false');
-      registerForm.classList.add('active');
-      registerForm.setAttribute('aria-hidden', 'false');
-      loginForm.classList.remove('active');
-      loginForm.setAttribute('aria-hidden', 'true');
-    });
-
-    // localStorage'dan kullanıcı bilgisi çek
-    function getUser() {
-      const user = localStorage.getItem('yuncodexUser');
-      return user ? JSON.parse(user) : null;
-    }
-    // localStorage'a kullanıcı kaydet
-    function setUser(user) {
-      localStorage.setItem('yuncodexUser', JSON.stringify(user));
-    }
-    // localStorage'dan kullanıcı sil
-    function clearUser() {
-      localStorage.removeItem('yuncodexUser');
-    }
-
-    // Sayfa yüklendiğinde eğer kullanıcı varsa direkt hoşgeldin göster
-    window.addEventListener('load', () => {
-      const user = getUser();
-      if (user) {
-        showWelcome();
-      } else {
-        showAuth();
-      }
-    });
-
-    // Kayıt formu submit
-    registerForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const username = document.getElementById('register-username').value.trim();
-      const password = document.getElementById('register-password').value;
-      if (!username || !password) {
-        alert('Lütfen kullanıcı adı ve şifre girin.');
-        return;
-      }
-      setUser({ username, password });
-      alert('Kayıt başarılı! Şimdi giriş yapabilirsiniz.');
-      loginToggle.click();
-    });
-
-    // Login formu submit
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const username = document.getElementById('login-username').value.trim();
-      const password = document.getElementById('login-password').value;
-      const user = getUser();
-      if (!user) {
-        alert('Önce kayıt olun lütfen.');
-        return;
-      }
-      if (username === user.username && password === user.password) {
-        alert('Giriş başarılı!');
-        showWelcome();
-      } else {
-        alert('Kullanıcı adı veya şifre yanlış.');
-      }
-    });
-
-    // Hoşgeldin gösterimi
-    function showWelcome() {
-      authBox.style.display = 'none';
-      welcomeContainer.style.display = 'block';
-    }
-    // Giriş/kayıt formu göster
-    function showAuth() {
-      authBox.style.display = 'block';
-      welcomeContainer.style.display = 'none';
-    }
-
-    // Çıkış butonu
-    logoutBtn.addEventListener('click', () => {
-      clearUser();
-      showAuth();
-      loginForm.reset();
-      registerForm.reset();
-      loginToggle.click();
-    });
-
-    // Instagram butonu
-    openInstagramBtn.addEventListener('click', () => {
-      window.open('https://www.instagram.com/yunusemrr55l/', '_blank');
-    });
-  </script>
-</body>
-</html>
-<div style="text-align:center; margin: 20px 0;">
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/VRjqeSzeYuk?autoplay=1&mute=1"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-<div class="social-login">
-  <a href="https://www.instagram.com/kaandemiirtass/" target="_blank" aria-label="Instagram Profile 1" rel="noopener noreferrer" class="profile-btn">
-    <img src="/mnt/data/15a687f5-8c55-4251-8423-5fe43bfc9ece.png" alt="Kaan" />
-  </a>
-  <a href="https://www.instagram.com/yunusemrr55l/" target="_blank" aria-label="Instagram Profile 2" rel="noopener noreferrer" class="profile-btn">
-    <img src="https://instagram.fesb10-3.fna.fbcdn.net/v/t51.2885-19/523389951_17951253165003157_5388345456249881647_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fesb10-3.fna.fbcdn.net&_nc_cat=101&_nc_oc=Q6cZ2QF4awXk14xAIbwxHXYXkbK3FrIAw2IEQT84AazHHOC7jr73bI5NMeERnGA_QTwPs-U&_nc_ohc=M7vRMIK9dM8Q7kNvwH_Abrc&_nc_gid=wb1XoDZad4SGgvT6F6dT7w&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_AfSNlM6uoKu6ud0F6aPURfGOU38NXV6RO6dOCyVfYAUrfQ&oe=688CC53B&_nc_sid=7d3a5" alt="Yunus Emre" />
-  </a>
-</div>
-
-<style>
-  .social-login {
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
-    gap: 25px;
-  }
-  .profile-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 2px solid #00ff0044;
-    background: rgba(0,0,0,0.5);
-    box-shadow: 0 0 15px #00ff0044;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    overflow: hidden;
-  }
-  .profile-btn img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .profile-btn:hover {
-    background: rgba(0,255,0,0.3);
-    box-shadow: 0 0 30px #00ff00;
-    border-color: #00ff00;
-  }
-</style>
-  <a href="users.html" 
-     style="color:#00ff00; text-decoration:underline; display:block; text-align:center; margin-top:15px;">
-    Kayıtlı Kullanıcıları Görüntüle
-  </a>
-
-</body>
+      loginToggle
