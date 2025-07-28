@@ -10,13 +10,6 @@
     * {
       margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;
     }
-    body, html {
-      height: 100%;
-      overflow-x: hidden;
-      background: black;
-      position: relative;
-      color: #00ff00;
-    }
     /* Matrix arka plan canvas */
     #matrix-canvas {
       position: fixed;
@@ -49,9 +42,6 @@
       margin-right: auto;
       z-index: 1;
       position: relative;
-      /* Hafif arka plan için opak siyah */
-      background-color: rgba(0,0,0,0.6);
-      box-shadow: 0 0 10px #00ff00aa;
     }
     .header img {
       width: 40px;
@@ -551,3 +541,18 @@
   </a>
 
 </body>
+<style>
+  .cursor-glow {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #00ff00;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(6px);
+    opacity: 0.6;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+</style>
