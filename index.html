@@ -502,13 +502,12 @@
     allowfullscreen>
   </iframe>
 </div>
-<!-- Instagram Butonları -->
 <div class="social-login">
-  <a href="https://www.instagram.com/kaandemiirtass/" target="_blank" aria-label="Instagram Profile 1">
-    <i class="fab fa-instagram"></i>
+  <a href="https://www.instagram.com/kaandemiirtass/" target="_blank" aria-label="Instagram Profile 1" rel="noopener noreferrer" class="profile-btn">
+    <img src="/mnt/data/15a687f5-8c55-4251-8423-5fe43bfc9ece.png" alt="Kaan" />
   </a>
-  <a href="https://www.instagram.com/kaandemiirtass/" target="_blank" aria-label="Instagram Profile 2">
-    <i class="fab fa-instagram"></i>
+  <a href="https://www.instagram.com/yunusemrr55l/" target="_blank" aria-label="Instagram Profile 2" rel="noopener noreferrer" class="profile-btn">
+    <img src="https://instagram.fesb10-3.fna.fbcdn.net/v/t51.2885-19/523389951_17951253165003157_5388345456249881647_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fesb10-3.fna.fbcdn.net&_nc_cat=101&_nc_oc=Q6cZ2QF4awXk14xAIbwxHXYXkbK3FrIAw2IEQT84AazHHOC7jr73bI5NMeERnGA_QTwPs-U&_nc_ohc=M7vRMIK9dM8Q7kNvwH_Abrc&_nc_gid=wb1XoDZad4SGgvT6F6dT7w&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_AfSNlM6uoKu6ud0F6aPURfGOU38NXV6RO6dOCyVfYAUrfQ&oe=688CC53B&_nc_sid=7d3a5" alt="Yunus Emre" />
   </a>
 </div>
 
@@ -519,58 +518,33 @@
     margin-top: 25px;
     gap: 25px;
   }
-  .social-login a {
-    color: #00ff00cc;
-    font-size: 28px;
-    transition: color 0.3s ease;
-    user-select: none;
-    text-shadow: 0 0 5px #00ff00aa;
+  .profile-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    border: 1px solid #00ff0044;
+    border: 2px solid #00ff0044;
     background: rgba(0,0,0,0.5);
-    box-shadow: 0 0 10px #00ff0044;
+    box-shadow: 0 0 15px #00ff0044;
     cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
   }
-  .social-login a:hover {
-    color: #00ff00;
-    background: rgba(0,255,0,0.2);
-    box-shadow: 0 0 20px #00ff00;
-  }
-
-  /* Instagram Aç Butonu */
-  #open-instagram-btn {
+  .profile-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    margin: 30px auto 0 auto;
-    padding: 12px 30px;
-    background-color: #00ff00;
-    color: black;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #00ff00aa;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
-  #open-instagram-btn:hover {
-    background-color: #00cc00;
-    box-shadow: 0 0 20px #00ff00;
+  .profile-btn:hover {
+    background: rgba(0,255,0,0.3);
+    box-shadow: 0 0 30px #00ff00;
+    border-color: #00ff00;
   }
 </style>
 
-<!-- Instagram Aç Butonu -->
-<button id="open-instagram-btn">Instagram'ı Aç</button>
-
-<!-- FontAwesome İkonları için: -->
+<!-- FontAwesome -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-<script>
-  document.getElementById('open-instagram-btn').addEventListener('click', () => {
-    window.open('https://www.instagram.com/kaandemiirtass/', '_blank');
-  });
-</script>
